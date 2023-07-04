@@ -1,0 +1,30 @@
+#000022 - Oxford Blue
+#7D98A1 - Cadet Gray
+#5E6572 - Payne's Gray
+#A9B4C2 - Powder Blue
+#EEF1EF - Anti-Flash White
+
+#01014d - a lighter dark blue
+
+Color palette generator:
+https://coolors.co/
+
+Icons:
+https://fontawesome.com/
+
+Gradient Generator:
+https://cssgradient.io/
+
+Help with Bootstrap:
+https://mdbootstrap.com/
+https://getbootstrap.com/docs/4.0/getting-started/introduction/
+
+Pictures:
+https://www.pexels.com/search/template/
+
+Other:
+https://impulsivecode.com/how-to-add-text-over-image-using-bootstrap/
+
+
+Problems I had:
+Dropdown not functioning properly; went to bootstrap and updated my link so that I was using the most recent version.

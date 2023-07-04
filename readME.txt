@@ -1,0 +1,1 @@
+This program implements HTML/CSS paired with Bootstrap 5.3 and utilizes a JSON databse. The application is designed for active military and veterans to have a way to find community with like-minded individuals.
