@@ -1,0 +1,24 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Morning Run",
+      "description": "Morning run in the park over by XYZ street",
+      "location": "XYZ Street Park",
+      "date": "July 14, 2023 @ 2PM",
+      "price": null,
+      "host": "John Doe",
+      "image": "../images/morning-run.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Game Night",
+      "description": "Come on over for some gaming, drinks, and snacks",
+      "location": "ABC Condo",
+      "date": "July 8, 2023 @ 8PM",
+      "price": null,
+      "host": "Jane Doe",
+      "image": "../images/game-night.jpg"
+    }
+  ]
+}

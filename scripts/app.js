@@ -6,12 +6,12 @@ document.addEventListener("DOMContentLoaded", (event) => {
             e.preventDefault();
             document.cookie = "loggedIn";
             console.log(document.cookie);
-            window.location.replace("home.html");
+            window.location.replace("index.html");
         })
     }
 
     //HOME PAGE ADDING PROFILE ICON AMONGST LOGIN
-    if ((window.location.pathname.split("/").at(-1) == "home.html" && document.cookie == "loggedIn") || (window.location.pathname.split("/").at(-1) == "myEvents.html" && document.cookie == "loggedIn") || (window.location.pathname.split("/").at(-1) == "createEvent.html" && document.cookie == "loggedIn")) {
+    if ((window.location.pathname.split("/").at(-1) == "index.html" && document.cookie == "loggedIn") || (window.location.pathname.split("/").at(-1) == "myEvents.html" && document.cookie == "loggedIn") || (window.location.pathname.split("/").at(-1) == "createEvent.html" && document.cookie == "loggedIn")) {
         console.log(document.cookie);
         let loginSignupBtn = document.getElementById("loginSignupBtn");
         console.log(loginSignupBtn);
@@ -24,6 +24,75 @@ document.addEventListener("DOMContentLoaded", (event) => {
             loginSignupBtn.innerHTML = "Login<br>or<br>Signup";
         })
     }
+
+    //MY EVENTS PAGE
+    if (window.location.pathname.split("/").at(-1) == "myEvents.html") {
+        let myEventsHero = document.getElementById("myEventsHero");
+        let myEventsTableBody = document.getElementById("myEventsTableBody");
+
+
+        //fetch request
+        fetch("http://localhost:3000/events")
+            .then((resp) => resp.json())
+            .then((events) => {
+                for (const event of events) {
+                    //creating table row to append data toS
+                    const eventsTableRow = document.createElement("tr");
+                    myEventsTableBody.append(eventsTableRow);
+
+                    //creating elements for table rows
+                    const eventsNameData = document.createElement("td");
+                    const eventsDateData = document.createElement("td");
+                    const eventsLocationData = document.createElement("td");
+                    const eventsHostData = document.createElement("td");
+                    //grabbing data from JSON db
+                    eventsNameData.innerHTML = event.title;
+                    eventsDateData.innerHTML = event.date;
+                    eventsLocationData.innerHTML = event.location;
+                    eventsHostData.innerHTML = event.host;
+                    //adding the data from json db
+                    eventsTableRow.append(eventsNameData);
+                    eventsTableRow.append(eventsDateData);
+                    eventsTableRow.append(eventsLocationData);
+                    eventsTableRow.append(eventsHostData);
+
+                }
+            })
+    }
+
+    // CREATE EVENTS PAGE
+    if (window.location.pathname.split("/").at(-1) == "createEvent.html") {
+        
+        createEventForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const createEventName = document.getElementById("createEventName").value;
+            const createEventDescription = document.getElementById("createEventDescription").value;
+            const createEventLocation = document.getElementById("createEventLocation").value;
+            const createEventDateTime = document.getElementById("createEventDateTime").value;
+            const createEventHost = document.getElementById("createEventHost").value;
+            const createEventPrice = document.getElementById("createEventPrice").value;
+            const data = {
+                title: createEventName,
+                description: createEventDescription,
+                location: createEventLocation,
+                date: createEventDateTime,
+                price: createEventPrice,
+                host: createEventHost,
+                image: "https://placehold.co/400"
+            }
+
+            fetch("http://localhost:3000/events", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(data)
+            })
+            .then((resp) => resp.json())
+            .then((data) => console.log(data))
+        })
+    }
+
 
 })
 
